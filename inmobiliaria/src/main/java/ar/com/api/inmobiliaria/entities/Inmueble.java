@@ -14,7 +14,7 @@ public class Inmueble {
     private int inmuebleId;
     
     private String moneda;
-    private Decimal valor;
+    private double valor;
     private int tipoInmueble;
     private String direccion;
     private int superficieTotal;
@@ -25,6 +25,8 @@ public class Inmueble {
     private String detalles;
 
     private int usuarioId;
+
+    
 
 
 
