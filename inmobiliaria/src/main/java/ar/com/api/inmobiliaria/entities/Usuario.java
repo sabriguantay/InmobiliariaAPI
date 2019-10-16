@@ -1,9 +1,12 @@
 package ar.com.api.inmobiliaria.entities;
 
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Usuario
  */
-
 @Entity
 @Table (name = "usuario")
 public class Usuario {
@@ -19,6 +22,17 @@ public class Usuario {
     private  String tipoUsuario; //inmobiliaria o locatario
     @Column (name ="persona_id")
     private int personaId;
+
+    public Usuario(){
+    }
+    
+    @OneToOne
+    @JoinColumn(name = "persona_id", referencedColumnName = "persona_id")
+    private Persona persona;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Contrato contrato;
 
     public int getUsuarioId() {
         return usuarioId;
@@ -42,8 +56,6 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    
+    }    
 
 }

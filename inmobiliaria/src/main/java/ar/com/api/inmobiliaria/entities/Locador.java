@@ -4,7 +4,11 @@ package ar.com.api.inmobiliaria.entities;
  * Locador
  */
 public class Locador {  
-    @Id
+
+    public Locador(){
+        
+    }
+    /*@Id
     @Column(name="locador_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int locadorId;
@@ -15,7 +19,7 @@ public class Locador {
 
     public void setLocadorId(int locadorId) {
         this.locadorId = locadorId;
-    }
+    }*/
 
   
 }

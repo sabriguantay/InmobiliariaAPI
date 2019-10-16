@@ -1,8 +1,12 @@
 package ar.com.api.inmobiliaria.entities;
 
+import javax.persistence.*;
+
 /**
  * Alquiler
  */
+@Entity
+@Table(name = "alquiler")
 public class Alquiler {
 
     @Id
@@ -16,6 +20,9 @@ public class Alquiler {
     @Column(name="tipo_alquiler")
     private String tipoAlquiler;
 
+    public Alquiler(){
+
+    }
 
     public int getAlquilerId() {
         return alquilerId;
@@ -40,6 +47,5 @@ public class Alquiler {
     public void setTipoAlquiler(String tipoAlquiler) {
         this.tipoAlquiler = tipoAlquiler;
     }
-
 
 }

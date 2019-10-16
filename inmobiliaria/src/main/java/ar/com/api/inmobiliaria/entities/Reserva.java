@@ -2,12 +2,12 @@ package ar.com.api.inmobiliaria.entities;
 
 import java.util.Date;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 /**
  * Reserva
  */
-
 @Entity
 @Table (name = "reserva")
 public class Reserva {
@@ -17,14 +17,19 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int reservaId;
 
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Date fecha;
     
+    @JsonIgnore
     @OneToOne(mappedBy = "locatario", cascade = CascadeType.ALL)
     private Locatario locatarioId;
     
+    @JsonIgnore
     @OneToOne(mappedBy = "inmueble", cascade = CascadeType.ALL)
     private Inmueble inmuebleId;
+
+    public Reserva(){
+        
+    }
 
     public Date getFecha() {
         return fecha;
