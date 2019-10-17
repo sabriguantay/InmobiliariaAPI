@@ -21,10 +21,6 @@ public class Contrato {
     private Date fechaInicio;
     @Column (name = "finalizacion")
     private Date fechaFinalizacion;
-    @Column (name = "inmueble_id")
-    private int inmuebleId;
-    @Column (name = "usuario_id")
-    private int usuarioId;
 
     @OneToOne
     @JoinColumn(name = "inmueble_id", referencedColumnName = "inmueble_id")
@@ -70,20 +66,4 @@ public class Contrato {
         this.fechaFinalizacion = fechaFinalizacion;
     }
 
-    public int getInmuebleId() {
-        return inmuebleId;
-    }
-
-    public void setInmuebleId(int inmuebleId) {
-        this.inmuebleId = inmuebleId;
-    }
-
-    public int getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(int usuarioId) {
-        this.usuarioId = usuarioId;
-    }
-    
 }
