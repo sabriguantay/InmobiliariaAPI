@@ -1,9 +1,12 @@
 package ar.com.api.inmobiliaria.services;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ar.com.api.inmobiliaria.repo.InmuebleRepository;
+import ar.com.api.inmobiliaria.entities.*;
+import ar.com.api.inmobiliaria.repo.*;
 
 /**
  * InmuebleService
@@ -13,6 +16,7 @@ public class InmuebleService {
 
     @Autowired
     InmuebleRepository repo;
+    
     public Inmueble crearInmueble(String moneda, double valor, int tipoInmueble, String direccion, int superficieTotal,
       int totalAmb, int nroDorm, int cantBanios, int finalidad, String detalles, String barrio) {
     Inmueble i = new Inmueble();
