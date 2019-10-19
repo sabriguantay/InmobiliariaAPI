@@ -13,24 +13,24 @@ public class InmuebleService {
 
     @Autowired
     InmuebleRepository repo;
-    
-    public int crearInmueble(String moneda, double valor, int tipoInmueble, String direccion,int superficieTotal, int totalAmbientes, int nroDormitorios, int cantBaños, int finalidad, String detalles, String barrio,){
-        Inmueble i = new Inmueble();
-        i.setMoneda();
-        i.setValor();
-        i.setTipoInmueble();
-        i.setDireccion();
-        i.setBarrio();
-        i.setSuperficieTotal();
-        i.setTotalAmbientes();
-        i.setNroDormitorios();
-        i.setCantBanios();
-        i.setFinalidad();
-        i.setDetalles();
-        
-        repo.save(i);
-        return i.getId();
-    }
+    public Inmueble crearInmueble(String moneda, double valor, int tipoInmueble, String direccion, int superficieTotal,
+      int totalAmb, int nroDorm, int cantBanios, int finalidad, String detalles, String barrio) {
+    Inmueble i = new Inmueble();
+    i.setMoneda(moneda);
+    i.setValor(valor);
+    i.setTipoInmueble(tipoInmueble);
+    i.setDireccion(direccion);
+    i.setBarrio(barrio);
+    i.setSuperficieTotal(superficieTotal);
+    i.setTotalAmbientes(totalAmb);
+    i.setNroDormitorios(nroDorm);
+    i.setCantBanios(cantBanios);
+    i.setFinalidad(finalidad);
+    i.setDetalles(detalles);
+
+    repo.save(i);
+    return i;
+  }
 
   public List<Inmueble> listarInmuebles() {
     return repo.findAll();
