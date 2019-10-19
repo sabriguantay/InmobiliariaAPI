@@ -15,7 +15,7 @@ public interface InmuebleRepository extends JpaRepository<Inmueble, Integer>{
 
  List<Inmueble> findAllByTotalAmbientes(int nroAmbientes);
 
-    List<Inmueble> findAllByCantBaños(int cantBanios);
+    List<Inmueble> findAllByCantBanios(int cantBanios);
 
     List<Inmueble> findAllByTipoInmueble(String tipo);
     
