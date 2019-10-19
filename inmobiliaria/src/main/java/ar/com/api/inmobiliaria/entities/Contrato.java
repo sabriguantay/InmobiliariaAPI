@@ -1,9 +1,12 @@
 package ar.com.api.inmobiliaria.entities;
 
+import java.util.*;
+
+import javax.persistence.*;
+
 /**
  * Contrato
  */
-
 @Entity
 @Table (name = "contrato")
 public class Contrato {
@@ -18,10 +21,49 @@ public class Contrato {
     private Date fechaInicio;
     @Column (name = "finalizacion")
     private Date fechaFinalizacion;
-    @Column (name = "inmueble_id")
-    private int inmuebleId;
-    @Column (name = "usuario_id")
-    private int usuarioId;
-    
-    
+
+    @OneToOne
+    @JoinColumn(name = "inmueble_id", referencedColumnName = "inmueble_id")
+    private Inmueble inmueble;
+
+    @OneToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id")
+    private Usuario usuario;
+
+    public Contrato(){
+
+    }
+
+    public int getContratoId() {
+        return contratoId;
+    }
+
+    public void setContratoId(int contratoId) {
+        this.contratoId = contratoId;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFinalizacion() {
+        return fechaFinalizacion;
+    }
+
+    public void setFechaFinalizacion(Date fechaFinalizacion) {
+        this.fechaFinalizacion = fechaFinalizacion;
+    }
+
 }
