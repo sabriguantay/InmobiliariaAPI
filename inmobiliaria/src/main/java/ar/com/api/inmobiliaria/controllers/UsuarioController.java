@@ -19,7 +19,7 @@ public class UsuarioController {
     UsuarioService usuarioService;
 
 
-    @PostMapping("auth/register")
+    @PostMapping("")
     public RegistrationResponse postRegisterUser(@RequestBody RegistrationRequest req) {
         
         RegistrationResponse r = new RegistrationResponse();
