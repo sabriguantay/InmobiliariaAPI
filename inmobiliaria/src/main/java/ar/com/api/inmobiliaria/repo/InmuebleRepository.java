@@ -4,19 +4,29 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import ar.com.api.inmobiliaria.entities.Inmueble;
 
+import java.util.*;
+
+
+
 /**
  * InmuebleRepository
  */
 public interface InmuebleRepository extends JpaRepository<Inmueble, Integer>{
 
-    Inmueble findByTotalAmbientes(int nroAmbientes);
+ List<Inmueble> findAllByTotalAmbientes(int nroAmbientes);
 
-    Inmueble findByCantBaños(int cantBaños);
+    List<Inmueble> findAllByCantBanios(int cantBanios);
 
-    Inmueble findByTipoInmueble(String tipo);
+    List<Inmueble> findAllByTipoInmueble(String tipo);
     
-    Inmueble findByBarrio(String barrio);
+    List<Inmueble> findAllByBarrio(String barrio);
 
-    Inmueble findByFinalidad(String fin);
+    List<Inmueble> findAllByFinalidad(String finalidad);
+
+    List<Inmueble>  findAllOrderByImporte();
+
+    List<Inmueble> findAllByLocalidad(String localidad);
+
+    List<Inmueble> findAllByNroDormitorios(int nroDorm);   
     
 }

@@ -1,6 +1,13 @@
 package ar.com.api.inmobiliaria.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import ar.com.api.inmobiliaria.models.request.RegistrationRequest;
+import ar.com.api.inmobiliaria.models.response.RegistrationResponse;
+import ar.com.api.inmobiliaria.services.UsuarioService;
 
 /**
  * UsuarioController
@@ -8,14 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UsuarioController {
 
-    /*@Autowired
+    @Autowired
     UsuarioService usuarioService;
 
-    @GetMapping("/personas")
-    public List<Persona> GetPersonas()
-    {
-        List<Persona> lp = personaService.getPersonas();
+
+    @PostMapping("auth/register")
+    public RegistrationResponse postRegisterUser(@RequestBody RegistrationRequest req) {
         
-        return lp;
-    }*/
+        RegistrationResponse r = new RegistrationResponse();
+        
+        r.isOk = true;
+        r.message = "Te registraste con exito";
+        return r;
+    }
+
+    
 }

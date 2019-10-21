@@ -3,7 +3,7 @@ package ar.com.api.inmobiliaria.entities;
 /**
  * Locador
  */
-public class Locador {  
+public class Locador extends Persona{  
 
     public Locador(){
         
@@ -18,7 +18,7 @@ public class Locador {
     }
 
     public void setLocadorId(int locadorId) {
-        this.locadorId = locadorId;
+        this.locadorId = locadorId;0
     }*/
 
   

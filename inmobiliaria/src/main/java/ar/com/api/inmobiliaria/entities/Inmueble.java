@@ -1,6 +1,13 @@
 package ar.com.api.inmobiliaria.entities;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -11,26 +18,34 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table (name = "inmueble")
 public class Inmueble {
 
-    @Id
-    @Column (name ="inmueble_id")
+ @Id
+    @Column(name = "inmueble_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int inmuebleId;
-    
+
     private String moneda;
     private double valor;
     private int tipoInmueble;
     private String direccion;
+    @Column(name = "superficie_total")
     private int superficieTotal;
+    @Column(name = "total_ambientes")
     private int totalAmbientes;
+    @Column(name = "nro_dormitorios")
     private int nroDormitorios;
-    private int cantBaños;
-    private int finalidad; //venta o alquiler
+    private String localidad;
+    private String estado; //disponible o reservado
+
+    @Column(name = "cantidad_baños")
+    private int cantBanios;
+    private int finalidad; // venta o alquiler
     private String detalles;
     private String barrio;
 
+    @Column(name = "usuario_id")
     private int usuarioId;
 
-    public Inmueble(){
+    public Inmueble() {
     }
 
     @JsonIgnore
@@ -101,12 +116,12 @@ public class Inmueble {
         this.nroDormitorios = nroDormitorios;
     }
 
-    public int getCantBaños() {
-        return cantBaños;
+    public int getCantBanios() {
+        return cantBanios;
     }
 
-    public void setCantBaños(int cantBaños) {
-        this.cantBaños = cantBaños;
+    public void setCantBanios(int cantBanios) {
+        this.cantBanios = cantBanios;
     }
 
     public int getFinalidad() {
@@ -148,5 +163,21 @@ public class Inmueble {
     public void setContrato(Contrato contrato) {
         this.contrato = contrato;
     }
-    
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+   
+
+    public String getLocalidad() {
+        return localidad;
+    }
+
+    public void setLocalidad(String localidad) {
+        this.localidad = localidad;
+    }
 }

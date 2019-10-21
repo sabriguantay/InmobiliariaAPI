@@ -3,7 +3,7 @@ package ar.com.api.inmobiliaria.entities;
 /**
  * Locatario
  */
-public class Locatario {
+public class Locatario extends Persona{
 
     /*
     @Id
