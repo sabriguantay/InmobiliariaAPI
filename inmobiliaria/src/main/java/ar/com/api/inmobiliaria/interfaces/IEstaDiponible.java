@@ -5,7 +5,6 @@ package ar.com.api.inmobiliaria.interfaces;
  */
 public interface IEstaDiponible {
 
-    public boolean estaDisponible;
+    public boolean estaDisponible = false;
 
-    
 }

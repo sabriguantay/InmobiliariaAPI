@@ -14,10 +14,10 @@ import ar.com.api.inmobiliaria.repo.*;
 @Service
 public class InmuebleService {
 
-    @Autowired
-    InmuebleRepository repo;
-    
-    public Inmueble crearInmueble(String moneda, double valor, int tipoInmueble, String direccion, int superficieTotal,
+  @Autowired
+  InmuebleRepository repo;
+
+  public Inmueble crearInmueble(String moneda, double valor, int tipoInmueble, String direccion, int superficieTotal,
       int totalAmb, int nroDorm, int cantBanios, int finalidad, String detalles, String barrio) {
     Inmueble i = new Inmueble();
     i.setMoneda(moneda);
