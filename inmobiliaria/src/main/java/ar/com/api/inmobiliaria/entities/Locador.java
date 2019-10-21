@@ -1,5 +1,10 @@
 package ar.com.api.inmobiliaria.entities;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Locador
  */
@@ -8,7 +13,7 @@ public class Locador extends Persona{
     public Locador(){
         
     }
-    /*@Id
+    @Id
     @Column(name="locador_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int locadorId;
@@ -18,8 +23,8 @@ public class Locador extends Persona{
     }
 
     public void setLocadorId(int locadorId) {
-        this.locadorId = locadorId;0
-    }*/
+        this.locadorId = locadorId;
+    }
 
   
 }
