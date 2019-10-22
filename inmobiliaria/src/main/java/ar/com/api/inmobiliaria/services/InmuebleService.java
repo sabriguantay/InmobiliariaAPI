@@ -61,10 +61,6 @@ public class InmuebleService {
 
   }
 
-  public List<Inmueble> buscarInmueblesPorTipoInmueble(String tipoInm) {
-    return repo.findAllByTipoInmueble(tipoInm);
-  }
-
   public List<Inmueble> buscarInmueblesPorTotalAmbientes(int totalAmb) {
 
     return repo.findAllByTotalAmbientes(totalAmb);

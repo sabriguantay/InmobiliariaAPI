@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -15,10 +16,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * Inmueble
  */
 @Entity
-@Table (name = "inmueble")
+@Table(name = "inmueble")
+@NamedQuery(name = "Inmueble.findAllByTotalAmbientes", query = "SELECT i FROM Inmueble i WHERE i.total_ambientes = ?1")
+@NamedQuery(name = "Inmueble.findAllByCantBanios", query = "SELECT i FROM Inmueble i WHERE i.cantidad_baños = ?1")
+@NamedQuery(name = "Inmueble.findAllByBarrio", query = "SELECT i FROM Inmueble i WHERE i.barrio like CONCAT('%',?1,'%')")
+@NamedQuery(name = "Inmueble.findAllByMoneda", query = "SELECT i FROM Inmueble i WHERE i.moneda like CONCAT('%', ?1,'%')")
+@NamedQuery(name = "Inmueble.findAllByLocalidad", query = "SELECT i FROM Inmueble i WHERE i.localidad like CONCAT('%',?1,'%')")
+@NamedQuery(name = "Inmueble.findAllByNroDormitorios", query = "SELECT i FROM Inmueble i WHERE i.nro_dormitorios = ?1")
+@NamedQuery(name = "Inmueble.findAllBySuperficie", query = "SELECT i FROM Inmueble i WHERE i.superficie_total = ?1")
+@NamedQuery(name = "Inmueble.findAllByFinalidad", query = "SELECT i FROM Inmueble i WHERE i.finalidad like CONCAT('%',?1,'%')")
 public class Inmueble {
 
- @Id
+    @Id
     @Column(name = "inmueble_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int inmuebleId;
@@ -34,7 +43,7 @@ public class Inmueble {
     @Column(name = "nro_dormitorios")
     private int nroDormitorios;
     private String localidad;
-    private String estado; //disponible o reservado
+    private String estado; // disponible o reservado
 
     @Column(name = "cantidad_baños")
     private int cantBanios;
@@ -171,7 +180,6 @@ public class Inmueble {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-   
 
     public String getLocalidad() {
         return localidad;
