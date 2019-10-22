@@ -15,9 +15,9 @@ public class VentaService {
     VentaRepository repo;
 
 
-    public Venta crearVenta(){
+    /*public Venta crearVenta(){
         repo.save();
         return ;
         
-    }
+    }*/
 }
