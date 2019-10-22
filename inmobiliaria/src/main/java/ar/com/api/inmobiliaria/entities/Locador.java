@@ -1,30 +1,49 @@
 package ar.com.api.inmobiliaria.entities;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 
 /**
  * Locador
  */
-public class Locador extends Persona{  
+@Entity
+@Table(name = "Locador")
+public class Locador extends Persona {
 
-    public Locador(){
-        
-    }
     @Id
-    @Column(name="locador_id")
+    @Column(name = "inmobiliaria_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int locadorId;
-  
-    public int getLocadorId() {
-        return locadorId;
+    private int id;
+    @Column(name = "nombre")
+    private String fullName;
+    private int dni;
+
+    public Locador() {
+
     }
 
-    public void setLocadorId(int locadorId) {
-        this.locadorId = locadorId;
+    public String getFullName() {
+        return fullName;
     }
 
-  
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }
