@@ -19,9 +19,9 @@ public class InmuebleController {
     InmuebleService is;
 
     @GetMapping("/inmuebles/searchbarrio=")
-    public ResponseEntity<Inmueble> getInmuebleByBarrio(
+    public ResponseEntity<List<Inmueble>> getInmuebleByBarrio(
             @RequestParam(value = "barrio", required = false) String barrio) {
-        List<Inmueble> li;
+        List<Inmueble> li ;
         is.buscarInmueblesPorBarrio(barrio);
 
         if (barrio == null) {
@@ -53,6 +53,5 @@ public class InmuebleController {
         }
         return ResponseEntity.ok(li);
     }
-
 
 }

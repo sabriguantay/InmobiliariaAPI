@@ -52,8 +52,8 @@ public class InmuebleService {
     return null;
   }
 
-  public List<Inmueble> buscarInmueblesOrdenadosPorImporte() {
-    return repo.findAllOrderByImporte();
+  public List<Inmueble> buscarInmueblesOrdenadosPorValor(double valor) {
+    return repo.findAllOrderByValor(valor);
   }
 
   public List<Inmueble> buscarInmueblesPorBarrio(String barrio) {

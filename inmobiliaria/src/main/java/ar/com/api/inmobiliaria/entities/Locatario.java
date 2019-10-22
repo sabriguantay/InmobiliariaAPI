@@ -3,12 +3,7 @@ package ar.com.api.inmobiliaria.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Locatario
@@ -20,11 +15,14 @@ public class Locatario extends Persona {
     @Column(name = "locatario_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int locatarioId;
+    private String fullName;
+    private int dni;
+    private String direccion;
+    private int telefono;
+    private String email;
 
-
-   @Column(name = "usuario_id")
+    @Column(name = "usuario_id")
     private int usuarioId;
-
 
     List<Reserva> reservas = new ArrayList<Reserva>();
     Usuario usuario;
@@ -64,6 +62,45 @@ public class Locatario extends Persona {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
 }

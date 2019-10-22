@@ -23,7 +23,7 @@ public interface InmuebleRepository extends JpaRepository<Inmueble, Integer>{
 
     List<Inmueble> findAllByFinalidad(String finalidad);
 
-    List<Inmueble>  findAllOrderByImporte();
+    List<Inmueble>  findAllOrderByValor(double valor);
 
     List<Inmueble> findAllByLocalidad(String localidad);
 

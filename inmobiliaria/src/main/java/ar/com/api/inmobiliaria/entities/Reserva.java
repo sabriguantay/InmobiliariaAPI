@@ -54,5 +54,13 @@ public class Reserva {
     public void setInmuebleId(Inmueble inmuebleId) {
         this.inmuebleId = inmuebleId;
     }
+
+    public int getReservaId() {
+        return reservaId;
+    }
+
+    public void setReservaId(int reservaId) {
+        this.reservaId = reservaId;
+    }
     
 }
