@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ar.com.api.inmobiliaria.models.request.RegistrationRequest;
 import ar.com.api.inmobiliaria.models.response.RegistrationResponse;
-import ar.com.api.inmobiliaria.services.*interface;
+import ar.com.api.inmobiliaria.services.*;
 
 /**
  * UsuarioController

@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -51,15 +53,20 @@ public class Inmueble {
     private String detalles;
     private String barrio;
 
-    @Column(name = "usuario_id")
-    private int usuarioId;
+    @ManyToOne
+    @JoinColumn(name = "locador_id", referencedColumnName = "locador_id")
+    Locador locador;
 
-    public Inmueble() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "inmobiliaria_id", referencedColumnName = "inmobiliaria_id")
+    Inmobiliaria inmobiliaria;
 
     @JsonIgnore
     @OneToOne(mappedBy = "inmueble", cascade = CascadeType.ALL)
-    private Contrato contrato;
+    private Reserva reserva;
+
+    public Inmueble() {
+    }
 
     public int getInmuebleId() {
         return inmuebleId;
@@ -149,28 +156,12 @@ public class Inmueble {
         this.detalles = detalles;
     }
 
-    public int getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(int usuarioId) {
-        this.usuarioId = usuarioId;
-    }
-
     public String getBarrio() {
         return barrio;
     }
 
     public void setBarrio(String barrio) {
         this.barrio = barrio;
-    }
-
-    public Contrato getContrato() {
-        return contrato;
-    }
-
-    public void setContrato(Contrato contrato) {
-        this.contrato = contrato;
     }
 
     public String getEstado() {
@@ -187,5 +178,29 @@ public class Inmueble {
 
     public void setLocalidad(String localidad) {
         this.localidad = localidad;
+    }
+
+    public Locador getLocador() {
+        return locador;
+    }
+
+    public void setLocador(Locador locador) {
+        this.locador = locador;
+    }
+
+    public Inmobiliaria getInmobiliaria() {
+        return inmobiliaria;
+    }
+
+    public void setInmobiliaria(Inmobiliaria inmobiliaria) {
+        this.inmobiliaria = inmobiliaria;
+    }
+
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
 }

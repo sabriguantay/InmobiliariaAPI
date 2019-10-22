@@ -34,7 +34,7 @@ public class InmuebleController {
     public ResponseEntity<Inmueble> getInmuebleByTipoInmueble(
             @RequestParam(value = "tipoInmueble", required = false) String tipo) {
         List<Inmueble> li;
-        is.buscarInmueblesPorTipoInmueble(tipo);
+        is.buscarPorTipoInmueble(tipo);
 
         if (tipo == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

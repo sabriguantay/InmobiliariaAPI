@@ -1,7 +1,6 @@
 package ar.com.api.inmobiliaria.entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -15,17 +14,22 @@ public class Locatario extends Persona {
     @Column(name = "locatario_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int locatarioId;
+    @Column(name = "nombre")
     private String fullName;
     private int dni;
     private String direccion;
+    private String localidad;
     private int telefono;
     private String email;
 
-    @Column(name = "usuario_id")
-    private int usuarioId;
+    @OneToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id")
+    private Usuario usuario;
 
-    List<Reserva> reservas = new ArrayList<Reserva>();
-    Usuario usuario;
+    @OneToMany(mappedBy = "locatario", cascade = CascadeType.ALL)
+    private List<Reserva> reservas = new ArrayList<Reserva>();
+
+
 
     public Locatario() {
 
@@ -37,14 +41,6 @@ public class Locatario extends Persona {
 
     public void setLocatarioId(int locatarioId) {
         this.locatarioId = locatarioId;
-    }
-
-    public int getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(int usuarioId) {
-        this.usuarioId = usuarioId;
     }
 
     public List<Reserva> getReservas() {
@@ -101,6 +97,14 @@ public class Locatario extends Persona {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getLocalidad() {
+        return localidad;
+    }
+
+    public void setLocalidad(String localidad) {
+        this.localidad = localidad;
     }
 
 }

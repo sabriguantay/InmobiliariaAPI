@@ -8,31 +8,26 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * Usuario
  */
 @Entity
-@Table (name = "usuario")
+@Table(name = "usuario")
 public class Usuario {
 
     @Id
-    @Column (name ="usuario_id")
+    @Column(name = "usuario_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int usuarioId;
-
+    private String username;
     private String email;
     private String password;
-    @Column (name ="tipo_usuario")
-    private  String tipoUsuario; //inmobiliaria o locatario
-    @Column (name ="persona_id")
-    private int personaId;
-
-    public Usuario(){
-    }
-    
-    @OneToOne
-    @JoinColumn(name = "persona_id", referencedColumnName = "persona_id")
-    private Persona persona;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Contrato contrato;
+    @OneToOne
+    @JoinColumn(name = "inmobiliaria_id", referencedColumnName = "inmobiliaria_id")
+    private Inmobiliaria inmobiliaria;
+
+    @JsonIgnore
+    @OneToOne
+    @JoinColumn(name = "locatario_id", referencedColumnName = "locatario_id")
+    private Locatario locatario;
 
     public int getUsuarioId() {
         return usuarioId;
@@ -56,6 +51,30 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
-    }    
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Inmobiliaria getInmobiliaria() {
+        return inmobiliaria;
+    }
+
+    public void setInmobiliaria(Inmobiliaria inmobiliaria) {
+        this.inmobiliaria = inmobiliaria;
+    }
+
+    public Locatario getLocatario() {
+        return locatario;
+    }
+
+    public void setLocatario(Locatario locatario) {
+        this.locatario = locatario;
+    }
 
 }

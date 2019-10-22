@@ -5,8 +5,8 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ar.com.api.inmobiliaria.entities.*;
-import ar.com.api.inmobiliaria.repo.*;
+import ar.com.api.inmobiliaria.entities.Inmueble;
+import ar.com.api.inmobiliaria.repo.InmuebleRepository;
 
 /**
  * InmuebleService
@@ -86,4 +86,10 @@ public class InmuebleService {
 
     return repo.findAllByCantBanios(banios);
   }
+
+  public List<Inmueble> buscarPorTipoInmueble(String tipo) {
+
+    return repo.findAllByTipoInmueble(tipo);
+  }
+
 }

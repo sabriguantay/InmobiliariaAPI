@@ -32,4 +32,6 @@ public interface InmuebleRepository extends JpaRepository<Inmueble, Integer>{
     List<Inmueble> findAllBySuperficie(int superficie);
     
     List<Inmueble> findAllByFinalidad(String finalidad);
+
+	List<Inmueble> findAllByTipoInmueble(String tipo);
 }
