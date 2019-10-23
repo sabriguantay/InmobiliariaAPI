@@ -1,13 +1,11 @@
 package ar.com.api.inmobiliaria.models.response;
 
 /**
- * InmobiliariaResponse
+ * AlquilerResponse
  */
-public class InmobiliariaResponse {
+public class AlquilerResponse {
 
-    
     public boolean isOk;
     public String message = " ";
 
-    
 }

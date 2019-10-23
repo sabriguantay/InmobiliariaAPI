@@ -2,6 +2,8 @@ package ar.com.api.inmobiliaria.entities;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Alquiler
  */
@@ -13,12 +15,15 @@ public class Alquiler {
     @Column(name = "alquiler_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int alquilerId;
+    @Column(name = "meses_alquiler")
+    private int mesesAlquiler;
+    private String moneda;
+    @Column(name = "monto_total")
+    private double montoTotal;
 
-    @Column(name = "operacion_id")
-    private int operacionId;
-
-    @Column(name="tipo_alquiler")
-    private String tipoAlquiler;
+    @JsonIgnore
+    @OneToOne(mappedBy = "alquiler_id", cascade = CascadeType.ALL)
+    private Reserva reserva;
 
     public Alquiler(){
 
@@ -32,20 +37,38 @@ public class Alquiler {
         this.alquilerId = alquilerId;
     }
 
-    public int getOperacionId() {
-        return operacionId;
+    public int getMesesAlquiler() {
+        return mesesAlquiler;
     }
 
-    public void setOperacionId(int operacionId) {
-        this.operacionId = operacionId;
+    public void setMesesAlquiler(int mesesAlquiler) {
+        this.mesesAlquiler = mesesAlquiler;
     }
 
-    public String getTipoAlquiler() {
-        return tipoAlquiler;
+    public String getMoneda() {
+        return moneda;
     }
 
-    public void setTipoAlquiler(String tipoAlquiler) {
-        this.tipoAlquiler = tipoAlquiler;
+    public void setMoneda(String moneda) {
+        this.moneda = moneda;
     }
+
+    public double getMontoTotal() {
+        return montoTotal;
+    }
+
+    public void setMontoTotal(double montoTotal) {
+        this.montoTotal= montoTotal;
+    }
+
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
+    }
+
+  
 
 }

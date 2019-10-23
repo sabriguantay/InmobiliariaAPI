@@ -17,6 +17,10 @@ public class ReservaService {
     @Autowired
     ReservaRepository repo;
 
+    public void save(Reserva r){
+        repo.save(r);
+    }
+
     public Reserva buscarPorId(int id) {
         Optional<Reserva> r = repo.findById(id);
 
@@ -26,17 +30,19 @@ public class ReservaService {
 
     }
 
-    public List<Reserva> getInmueblesReservados() {
+    public List<Reserva> getListaInmueblesReservados() {
         return repo.findAll();
     }
 
-    public Reserva crearReserva(int id, Date fecha, Locatario locatario, Inmueble inmueble ) {
+
+    //check: se debe settear la id auto - incrementada¿? 
+    public Reserva crearReserva(int id, int fecha, Locatario locatario, Inmueble inmueble ) {
         Reserva r = new Reserva();
 
         r.setReservaId(id);
         r.setFecha(new Date());
-        r.setInmuebleId(inmueble);
-        r.setLocatarioId(locatario);
+        r.setInmueble(inmueble);
+        r.setLocatario(locatario);
         repo.save(r);
         return r;
 

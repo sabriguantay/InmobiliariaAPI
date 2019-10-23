@@ -21,11 +21,11 @@ public class Reserva {
     
     @JsonIgnore
     @OneToOne(mappedBy = "locatario", cascade = CascadeType.ALL)
-    private Locatario locatarioId;
+    private Locatario locatario;
     
     @JsonIgnore
     @OneToOne(mappedBy = "inmueble", cascade = CascadeType.ALL)
-    private Inmueble inmuebleId;
+    private Inmueble inmueble;
 
     public Reserva(){
         
@@ -39,20 +39,20 @@ public class Reserva {
         this.fecha = fecha;
     }
 
-    public Locatario getLocatarioId() {
-        return locatarioId;
+    public Locatario getLocatario() {
+        return locatario;
     }
 
-    public void setLocatarioId(Locatario locatarioId) {
-        this.locatarioId = locatarioId;
+    public void setLocatario(Locatario locatario) {
+        this.locatario = locatario;
     }
 
-    public Inmueble getInmuebleId() {
-        return inmuebleId;
+    public Inmueble getInmueble() {
+        return inmueble;
     }
 
-    public void setInmuebleId(Inmueble inmuebleId) {
-        this.inmuebleId = inmuebleId;
+    public void setInmueble(Inmueble inmueble) {
+        this.inmueble = inmueble;
     }
 
     public int getReservaId() {

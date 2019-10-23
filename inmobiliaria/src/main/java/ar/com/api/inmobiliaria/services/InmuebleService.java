@@ -1,11 +1,12 @@
 package ar.com.api.inmobiliaria.services;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ar.com.api.inmobiliaria.entities.Inmueble;
+import ar.com.api.inmobiliaria.entities.*;
 import ar.com.api.inmobiliaria.repo.InmuebleRepository;
 
 /**
@@ -37,7 +38,7 @@ public class InmuebleService {
     return i;
   }
 
-  public List<Inmueble> listarInmuebles() {
+  public List<Inmueble> getListaInmuebles() {
     return repo.findAll();
 
   }
@@ -50,6 +51,10 @@ public class InmuebleService {
       return i.get();
     }
     return null;
+  }
+
+  public void save(Inmueble i) {
+    repo.save(i);
   }
 
   public List<Inmueble> buscarInmueblesOrdenadosPorValor(double valor) {

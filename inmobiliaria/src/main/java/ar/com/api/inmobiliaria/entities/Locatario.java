@@ -14,10 +14,10 @@ public class Locatario extends Persona {
     @Column(name = "locatario_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int locatarioId;
-    @Column(name = "nombre")
-    private String fullName;
-    private int dni;
-    private String direccion;
+    
+    private String nombre;
+    private String dni;
+    private String domicilio;
     private String localidad;
     private int telefono;
     private String email;
@@ -59,29 +59,16 @@ public class Locatario extends Persona {
         this.usuario = usuario;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
+   
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
 
     public int getTelefono() {
         return telefono;
@@ -105,6 +92,22 @@ public class Locatario extends Persona {
 
     public void setLocalidad(String localidad) {
         this.localidad = localidad;
+    }
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
 }

@@ -1,9 +1,9 @@
 package ar.com.api.inmobiliaria.models.request;
 
 /**
- * CrearInmuebleRequest
+ * InmuebleCreacionRequest
  */
-public class CrearInmuebleRequest {
+public class InmuebleCreacionRequest {
 
     public String moneda;
     public double valor;

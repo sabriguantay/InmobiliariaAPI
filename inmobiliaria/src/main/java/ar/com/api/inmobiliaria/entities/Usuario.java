@@ -18,6 +18,7 @@ public class Usuario {
     private String username;
     private String email;
     private String password;
+    private String estado; //ACTIVO / NO ACTIVO
 
     @JsonIgnore
     @OneToOne
@@ -75,6 +76,14 @@ public class Usuario {
 
     public void setLocatario(Locatario locatario) {
         this.locatario = locatario;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
 }

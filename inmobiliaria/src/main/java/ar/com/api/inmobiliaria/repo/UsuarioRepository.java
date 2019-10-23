@@ -16,5 +16,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	void save(Inmobiliaria i);
 
 	void save(Locatario l);
+
+	Usuario findByUsername(String username);
     
 }

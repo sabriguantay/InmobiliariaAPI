@@ -17,6 +17,10 @@ public class Inmobiliaria {
     private int id;
     private String nombre;
     private String email;
+    private int telefono;
+    private String domicilio;
+    
+    
 
     @JsonIgnore
     @OneToOne
@@ -62,6 +66,22 @@ public class Inmobiliaria {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
     }
 
 }

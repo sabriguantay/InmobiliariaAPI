@@ -15,8 +15,6 @@ public class Contrato {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int contratoId;
 
-    @Column (name = "duracion_contrato_mese")
-    private int duracion;
     @Column (name = "fecha_inicio")
     private Date fechaInicio;
     @Column (name = "finalizacion")
@@ -42,13 +40,6 @@ public class Contrato {
         this.contratoId = contratoId;
     }
 
-    public int getDuracion() {
-        return duracion;
-    }
-
-    public void setDuracion(int duracion) {
-        this.duracion = duracion;
-    }
 
     public Date getFechaInicio() {
         return fechaInicio;
