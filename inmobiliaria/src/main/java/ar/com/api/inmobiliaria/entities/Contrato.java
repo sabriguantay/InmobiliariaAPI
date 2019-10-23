@@ -14,9 +14,7 @@ public class Contrato {
     @Column (name ="contrato_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int contratoId;
-
-    @Column (name = "fecha_inicio")
-    private Date fechaInicio;
+    private Date fecha;
     
 
     /*@OneToOne
@@ -39,13 +37,12 @@ public class Contrato {
         this.contratoId = contratoId;
     }
 
-
-    public Date getFechaInicio() {
-        return fechaInicio;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     
