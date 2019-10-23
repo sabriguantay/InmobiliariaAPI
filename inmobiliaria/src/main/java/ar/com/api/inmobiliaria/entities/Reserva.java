@@ -2,7 +2,15 @@ package ar.com.api.inmobiliaria.entities;
 
 import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 /**
@@ -18,7 +26,15 @@ public class Reserva {
     private int reservaId;
 
     private Date fecha;
+
+    @JsonIgnore
+    @JoinColumn(name = "alquiler_id", referencedColumnName = "alquiler_id")
+    private Alquiler alquiler;
     
+    @JsonIgnore
+    @JoinColumn(name = "venta_id", referencedColumnName = "venta_id")
+    private Venta venta;
+
     @JsonIgnore
     @OneToOne(mappedBy = "locatario", cascade = CascadeType.ALL)
     private Locatario locatario;
@@ -63,4 +79,21 @@ public class Reserva {
         this.reservaId = reservaId;
     }
     
+    public void setAlquiler(Alquiler alquiler) {
+        this.alquiler = alquiler;
+        this.alquiler.setReserva(this); 
+    }
+    
+    public Alquiler getAlquiler() {
+        return alquiler;
+    }
+
+    public void setVenta(Venta venta) {
+        this.venta = venta;
+        this.venta.setReserva(this);
+    }
+
+    public Venta getVenta() {
+        return venta;
+    }
 }

@@ -22,7 +22,12 @@ public class Alquiler {
     private double montoTotal;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "alquiler_id", cascade = CascadeType.ALL)
+	@OneToOne
+    @JoinColumn(name = "contrato_id", referencedColumnName = "contrato_id")
+    private Contrato contrato;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "alquiler", cascade = CascadeType.ALL)
     private Reserva reserva;
 
     public Alquiler(){
@@ -69,6 +74,12 @@ public class Alquiler {
         this.reserva = reserva;
     }
 
-  
+    public void setContrato(Contrato contrato) {
+        this.contrato = contrato;
+        this.contrato.setAlquiler(this);
+	}
 
+    public Contrato getContrato() {
+        return contrato;
+    }
 }
