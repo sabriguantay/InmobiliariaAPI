@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class Locador extends Persona {
 
     @Id
-    @Column(name = "inmobiliaria_id")
+    @Column(name = "locador_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombre;
