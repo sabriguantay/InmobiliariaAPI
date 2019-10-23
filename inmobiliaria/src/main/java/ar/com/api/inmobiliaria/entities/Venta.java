@@ -14,7 +14,7 @@ public class Venta {
     @Id
     @Column(name = "venta_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int alquilerId;
+    private int ventaId;
     private String moneda;
     @Column(name = "monto_total")
     private double montoTotal;
@@ -30,12 +30,7 @@ public class Venta {
         
     }
     
-	public int getAlquilerId() {
-		return alquilerId;
-	}
-	public void setAlquilerId(int alquilerId) {
-		this.alquilerId = alquilerId;
-	}
+	
 	public String getMoneda() {
 		return moneda;
 	}
@@ -47,6 +42,14 @@ public class Venta {
 	}
 	public void setMontoTotal(double montoTotal) {
 		this.montoTotal = montoTotal;
+	}
+
+	public int getVentaId() {
+		return ventaId;
+	}
+
+	public void setVentaId(int ventaId) {
+		this.ventaId = ventaId;
 	}
 
 

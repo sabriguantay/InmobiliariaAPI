@@ -17,16 +17,15 @@ public class Contrato {
 
     @Column (name = "fecha_inicio")
     private Date fechaInicio;
-    @Column (name = "finalizacion")
-    private Date fechaFinalizacion;
+    
 
-    @OneToOne
+    /*@OneToOne
     @JoinColumn(name = "inmueble_id", referencedColumnName = "inmueble_id")
     private Inmueble inmueble;
 
     @OneToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id")
-    private Usuario usuario;
+    private Usuario usuario;*/
 
     public Contrato(){
 
@@ -49,12 +48,6 @@ public class Contrato {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaFinalizacion() {
-        return fechaFinalizacion;
-    }
-
-    public void setFechaFinalizacion(Date fechaFinalizacion) {
-        this.fechaFinalizacion = fechaFinalizacion;
-    }
+    
 
 }
