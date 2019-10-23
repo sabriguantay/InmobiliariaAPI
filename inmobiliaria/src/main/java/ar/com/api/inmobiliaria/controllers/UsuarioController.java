@@ -19,7 +19,7 @@ public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
-    @PostMapping("/usuarios/inmobiliarias")
+    @PostMapping("/register/usuarios/inmobiliarias")
     public RegistrationResponse postRegisterUserInmobiliaria(@RequestBody UsuarioInmCreacionRequest req) {
 
         RegistrationResponse r = new RegistrationResponse();
@@ -30,7 +30,7 @@ public class UsuarioController {
         return r;
     }
 
-    @PostMapping("/usuarios/locatarios")
+    @PostMapping("/register/regusuarios/locatarios")
     public RegistrationResponse postRegisterUserInmobiliariaLocatario(@RequestBody UsuarioLocCreacionRequest req) {
 
         RegistrationResponse r = new RegistrationResponse();
