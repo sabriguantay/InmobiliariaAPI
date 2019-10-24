@@ -74,7 +74,7 @@ public class UsuarioService {
 
     }
 
-    public Usuario updateUsuario(int id, String nombre, String email, String password) {
+    public Usuario updateUsuario(int id, String email, String password) {
         Usuario u = this.buscarUsuarioPorId(id);
         u.setEmail(email);
         u.setUsername(u.getEmail());
