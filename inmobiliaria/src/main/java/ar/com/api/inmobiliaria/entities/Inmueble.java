@@ -55,17 +55,18 @@ public class Inmueble {
 
     @ManyToOne
     @JoinColumn(name = "locador_id", referencedColumnName = "locador_id")
-    Locador locador;
+    private Locador locador;
 
     @ManyToOne
     @JoinColumn(name = "inmobiliaria_id", referencedColumnName = "inmobiliaria_id")
-    Inmobiliaria inmobiliaria;
+    private Inmobiliaria inmobiliaria;
 
     @JsonIgnore
     @OneToOne(mappedBy = "inmueble", cascade = CascadeType.ALL)
     private Reserva reserva;
 
     public Inmueble() {
+
     }
 
     public int getInmuebleId() {
@@ -194,6 +195,7 @@ public class Inmueble {
 
     public void setInmobiliaria(Inmobiliaria inmobiliaria) {
         this.inmobiliaria = inmobiliaria;
+        this.inmobiliaria.setInmueble(this);
     }
 
     public Reserva getReserva() {
@@ -202,5 +204,7 @@ public class Inmueble {
 
     public void setReserva(Reserva reserva) {
         this.reserva = reserva;
+        this.reserva.setInmueble(this);
     }
+
 }

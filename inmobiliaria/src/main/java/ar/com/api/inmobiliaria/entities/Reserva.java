@@ -36,11 +36,12 @@ public class Reserva {
     private Venta venta;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "locatario", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "reserva", cascade = CascadeType.ALL)
     private Locatario locatario;
     
     @JsonIgnore
-    @OneToOne(mappedBy = "inmueble", cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "inmueble_id", referencedColumnName = "inmueble_id")
     private Inmueble inmueble;
 
     public Reserva(){

@@ -19,8 +19,6 @@ public class Inmobiliaria {
     private String email;
     private int telefono;
     private String domicilio;
-    
-    
 
     @JsonIgnore
     @OneToOne
@@ -28,9 +26,8 @@ public class Inmobiliaria {
     private Usuario usuario;
 
     @JsonIgnore
-    @OneToMany 
-    @JoinColumn (name = "")
-
+    @OneToMany (mappedBy = "inmobiliaria", cascade = CascadeType.ALL)
+    private Inmueble inmueble;
 
     public int getInmobiliariaId() {
         return id;
@@ -82,6 +79,14 @@ public class Inmobiliaria {
 
     public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
+    }
+
+    public Inmueble getInmueble() {
+        return inmueble;
+    }
+
+    public void setInmueble(Inmueble inmueble) {
+        this.inmueble = inmueble;
     }
 
 }
