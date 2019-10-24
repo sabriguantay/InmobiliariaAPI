@@ -18,10 +18,11 @@ public class InmuebleController {
     @Autowired
     InmuebleService is;
 
+    
     @GetMapping("/inmuebles/searchbarrio=")
     public ResponseEntity<List<Inmueble>> getInmuebleByBarrio(
             @RequestParam(value = "barrio", required = false) String barrio) {
-        List<Inmueble> li ;
+        List<Inmueble> li = new ArrayList<Inmueble>();
         is.buscarInmueblesPorBarrio(barrio);
 
         if (barrio == null) {
@@ -30,10 +31,10 @@ public class InmuebleController {
         return ResponseEntity.ok(li);
     }
 
-    @GetMapping("/inmuebles/tipoInmueble")
-    public ResponseEntity<Inmueble> getInmuebleByTipoInmueble(
+    @GetMapping("/inmuebles/searchtipoInmueble=")
+    public ResponseEntity<List<Inmueble>> getInmuebleByTipoInmueble(
             @RequestParam(value = "tipoInmueble", required = false) String tipo) {
-        List<Inmueble> li;
+        List<Inmueble> li = new ArrayList<Inmueble>();
         is.buscarPorTipoInmueble(tipo);
 
         if (tipo == null) {
@@ -43,9 +44,9 @@ public class InmuebleController {
     }
 
     @GetMapping("/inmuebles/searchTotalAmbientes=")
-    public ResponseEntity<Inmueble> getInmuebleByTotalAmbientes(
-            @RequestParam(value = "barrio", required = false) int totalAmb) {
-        List<Inmueble> li;
+    public ResponseEntity<List<Inmueble>> getInmuebleByTotalAmbientes(
+            @RequestParam(value = ""totalAmbientes"", required = false) int totalAmb) {
+        List<Inmueble> li = new ArrayList<Inmueble>();
         is.buscarInmueblesPorTotalAmbientes(totalAmb);
 
         if (totalAmb < 0) {
@@ -53,5 +54,6 @@ public class InmuebleController {
         }
         return ResponseEntity.ok(li);
     }
+
 
 }
