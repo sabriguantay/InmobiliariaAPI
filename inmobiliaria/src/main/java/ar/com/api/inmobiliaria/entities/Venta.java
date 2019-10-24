@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * Venta
  */
 @Entity
-@Table(name = "alquiler")
+@Table(name = "venta")
 public class Venta {
 
     @Id
