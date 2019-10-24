@@ -2,14 +2,7 @@ package ar.com.api.inmobiliaria.entities;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -26,12 +19,9 @@ public class Contrato {
     private Date fecha;
     
     @JsonIgnore
-    @OneToOne(mappedBy = "contrato", cascade = CascadeType.ALL)
-    private Venta venta;
-
-    @JsonIgnore
-    @OneToOne(mappedBy = "contrato", cascade = CascadeType.ALL)
-    private Alquiler alquiler;
+    @OneToOne 
+    @JoinColumn(name = "reserva_id", referencedColumnName = "reserva_id")
+    private Reserva reserva ;
 
     public Contrato(){
 
@@ -53,20 +43,13 @@ public class Contrato {
         this.fecha = fecha;
     }
 
-	public Venta getVenta() {
-		return venta;
-	}
+    public Reserva getReserva() {
+        return reserva;
+    }
 
-	public void setVenta(Venta venta) {
-		this.venta = venta;
-	}
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
+    }
 
-	public Alquiler getAlquiler() {
-		return alquiler;
-	}
-
-	public void setAlquiler(Alquiler alquiler) {
-		this.alquiler = alquiler;
-	}
 
 }
