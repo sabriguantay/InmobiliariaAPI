@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import ar.com.api.inmobiliaria.services.*;
 import ar.com.api.inmobiliaria.entities.*;
+import ar.com.api.inmobiliaria.models.request.InmuebleCreacionRequest;
+import ar.com.api.inmobiliaria.models.response.*;
 
 /**
  * InmuebleController
@@ -18,7 +20,18 @@ public class InmuebleController {
     @Autowired
     InmuebleService is;
 
+    @PostMapping("/inmuebles")
+    public InmuebleResponse postInmueble(@RequestBody InmuebleCreacionRequest req) {
+        InmuebleResponse r = new InmuebleResponse();
+        is.crearInmueble(req.moneda, req.valor, req.tipoInmueble, req.direccion, req.superficieTotal,
+                req.totalAmbientes, req.nroDormitorios, req.cantBanios, req.finalidad, req.detalles, req.barrio);
     
+    
+                r.isOk = true;
+                r.message = "Inmueble creado con exito";
+                return r;
+            }
+
     @GetMapping("/inmuebles/searchbarrio=")
     public ResponseEntity<List<Inmueble>> getInmuebleByBarrio(
             @RequestParam(value = "barrio", required = false) String barrio) {
@@ -55,5 +68,7 @@ public class InmuebleController {
         return ResponseEntity.ok(li);
     }
 
-
 }
+
+
+
