@@ -45,7 +45,7 @@ public class InmuebleController {
 
     @GetMapping("/inmuebles/searchTotalAmbientes=")
     public ResponseEntity<List<Inmueble>> getInmuebleByTotalAmbientes(
-            @RequestParam(value = "barrio", required = false) int totalAmb) {
+            @RequestParam(value = ""totalAmbientes"", required = false) int totalAmb) {
         List<Inmueble> li = new ArrayList<Inmueble>();
         is.buscarInmueblesPorTotalAmbientes(totalAmb);
 
