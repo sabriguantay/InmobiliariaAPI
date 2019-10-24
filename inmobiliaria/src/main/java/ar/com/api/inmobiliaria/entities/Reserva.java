@@ -26,9 +26,7 @@ public class Reserva {
     @JsonIgnore
     @JoinColumn(name = "venta_id", referencedColumnName = "venta_id")
     private Venta venta;
-
-
-    
+ 
     @JsonIgnore
     @OneToOne(mappedBy = "reserva", cascade = CascadeType.ALL)
     private Contrato contrato;
@@ -44,7 +42,6 @@ public class Reserva {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
 
     public int getReservaId() {
         return reservaId;
@@ -71,4 +68,13 @@ public class Reserva {
     public Venta getVenta() {
         return venta;
     }
+
+    public Contrato getContrato() {
+        return contrato;
+    }
+
+    public void setContrato(Contrato contrato) {
+        this.contrato = contrato;
+    }
+    
 }

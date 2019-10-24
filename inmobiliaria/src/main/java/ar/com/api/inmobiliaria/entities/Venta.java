@@ -25,12 +25,12 @@ public class Venta {
     private int ventaId;
     private String moneda;
     @Column(name = "monto_total")
-    private double montoTotal;
-
+	private double montoTotal;
+	
 	@JsonIgnore
 	@OneToOne
-    @JoinColumn(name = "contrato_id", referencedColumnName = "contrato_id")
-    private Contrato contrato;
+    @JoinColumn(name = "inmueble_id", referencedColumnName = "inmueble_id")
+    private Inmueble inmueble;
 
     @JsonIgnore
     @OneToOne(mappedBy = "venta", cascade = CascadeType.ALL)
@@ -68,12 +68,13 @@ public class Venta {
 		this.reserva = reserva;
 	}
 
-    public void setContrato(Contrato contrato) {
-        this.contrato = contrato;
-        this.contrato.setVenta(this);
+	public Inmueble getInmueble() {
+		return inmueble;
 	}
 
-    public Contrato getContrato() {
-        return contrato;
-    }
+	public void setInmueble(Inmueble inmueble) {
+		this.inmueble = inmueble;
+		this.inmueble.setVenta(this);
+	}
+
 }

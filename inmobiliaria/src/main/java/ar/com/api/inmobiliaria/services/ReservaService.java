@@ -36,16 +36,25 @@ public class ReservaService {
 
 
     //check: se debe settear la id auto - incrementada¿? 
-    public Reserva crearReserva(int id, int fecha, Locatario locatario, Inmueble inmueble ) {
+    public Reserva crearReservaAlquiler(int id, int fecha, Alquiler alquiler, Contrato contrato) {
         Reserva r = new Reserva();
 
         r.setReservaId(id);
         r.setFecha(new Date());
-        r.setInmueble(inmueble);
-        r.setLocatario(locatario);
+        r.setAlquiler(alquiler);
+        r.setContrato(contrato);
         repo.save(r);
         return r;
-
     }
 
+    public Reserva crearReservaVenta(int id, int fecha, Venta venta, Contrato contrato) {
+        Reserva r = new Reserva();
+
+        r.setReservaId(id);
+        r.setFecha(new Date());
+        r.setVenta(venta);
+        r.setContrato(contrato);
+        repo.save(r);
+        return r;
+    }
 }

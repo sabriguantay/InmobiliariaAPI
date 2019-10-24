@@ -49,7 +49,7 @@ public class Contrato {
 
     public void setReserva(Reserva reserva) {
         this.reserva = reserva;
+        this.reserva.setContrato(this);
     }
-
 
 }

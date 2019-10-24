@@ -13,22 +13,28 @@ import ar.com.api.inmobiliaria.services.ReservaService;
 @RestController
 public class ReservaController {
 
-@Autowired 
-ReservaService reservaService;
+    @Autowired
+    ReservaService reservaService;
 
-@PostMapping("/inmobiliarias/inmueble/reserva")
-    public ReservaResponse postCrearReserva(@RequestBody ReservaCreacionRequest req) {
-        
-        ReservaResponse r = new ReservaResponse();
-        reservaService.crearReserva(req.id, req.fecha, req.locatario, req.inmueble);
+    @PostMapping("/inmobiliarias/inmueble/alquiler/reserva")
+    public ReservaAlquilerResponse postCrearReservaAl(@RequestBody ReservaAlquilerRequest req) {
 
-        
+        ReservaAlquilerResponse r = new ReservaAlquilerResponse();
+        reservaService.crearReservaAlquiler(req.id, req.fecha, req.alquiler, req.contrato);
+
         r.isOk = true;
-        r.message = "Venta creada con exito";
+        r.message = "Reserva exitosa";
         return r;
     }
 
-
-
-    
+    @PostMapping("/inmobiliarias/inmueble/venta/reserva")
+    public ReservaVentaResponse postCrearReservaV(@RequestBody ReservaVentaRequest req) {
+        
+        ReservaVentaResponse r = new ReservaVentaResponse();
+        reservaService.crearReservaVenta(req.id, req.fecha, req.venta, req.contrato);
+        
+        r.isOk = true;
+        r.message = "Reserva exitosa";
+        return r;
+    }
 }

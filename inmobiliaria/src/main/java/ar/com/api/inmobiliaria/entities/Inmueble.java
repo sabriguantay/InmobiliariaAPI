@@ -63,10 +63,13 @@ public class Inmueble {
 
     @JsonIgnore
     @OneToOne(mappedBy = "inmueble", cascade = CascadeType.ALL)
-    private Reserva reserva;
+    private Venta venta;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "inmueble", cascade = CascadeType.ALL)
+    private Alquiler alquiler;
 
     public Inmueble() {
-
     }
 
     public int getInmuebleId() {
@@ -198,13 +201,20 @@ public class Inmueble {
         this.inmobiliaria.setInmueble(this);
     }
 
-    public Reserva getReserva() {
-        return reserva;
+    public Venta getVenta() {
+        return venta;
     }
 
-    public void setReserva(Reserva reserva) {
-        this.reserva = reserva;
-        this.reserva.setInmueble(this);
+    public void setVenta(Venta venta) {
+        this.venta = venta;
+    }
+
+    public Alquiler getAlquiler() {
+        return alquiler;
+    }
+
+    public void setAlquiler(Alquiler alquiler) {
+        this.alquiler = alquiler;
     }
 
 }
