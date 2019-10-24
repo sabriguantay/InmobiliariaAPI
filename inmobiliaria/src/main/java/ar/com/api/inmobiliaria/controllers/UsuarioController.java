@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import ar.com.api.inmobiliaria.entities.*;
 import ar.com.api.inmobiliaria.models.request.*;
-import ar.com.api.inmobiliaria.models.response.RegistrationResponse;
+import ar.com.api.inmobiliaria.models.response.*;
 import ar.com.api.inmobiliaria.services.UsuarioService;
 
 /**
@@ -30,7 +30,7 @@ public class UsuarioController {
         return r;
     }
 
-    @PostMapping("/register/regusuarios/locatarios")
+    @PostMapping("/register/usuarios/locatarios")
     public RegistrationResponse postRegisterUserInmobiliariaLocatario(@RequestBody UsuarioLocCreacionRequest req) {
 
         RegistrationResponse r = new RegistrationResponse();
@@ -51,4 +51,14 @@ public class UsuarioController {
         return ResponseEntity.ok(u);
     }
 
+    @PutMapping ("usuarios/{id}")
+    public UsuarioResponse putDatosUsuario(@RequestBody UsuarioUpdateRequest req){
+        UsuarioResponse r = new UsuarioResponse();
+        usuarioService.updateUsuario(req.id, req.email, req.password);
+
+        r.isOk = true;
+        r.message = "Usuario modificado con exito";
+        return r;
+
+    }
 }
