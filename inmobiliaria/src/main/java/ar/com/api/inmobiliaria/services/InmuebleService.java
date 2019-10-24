@@ -19,7 +19,7 @@ public class InmuebleService {
   InmuebleRepository repo;
 
   public Inmueble crearInmueble(String moneda, double valor, int tipoInmueble, String direccion, int superficieTotal,
-      int totalAmb, int nroDorm, int cantBanios, int finalidad, String detalles, String barrio) {
+      int totalAmbientes, int nroDormitorios, int cantBanios, int finalidad, String detalles, String barrio) {
     Inmueble i = new Inmueble();
     i.setMoneda(moneda);
     i.setValor(valor);
@@ -27,8 +27,8 @@ public class InmuebleService {
     i.setDireccion(direccion);
     i.setBarrio(barrio);
     i.setSuperficieTotal(superficieTotal);
-    i.setTotalAmbientes(totalAmb);
-    i.setNroDormitorios(nroDorm);
+    i.setTotalAmbientes(totalAmbientes);
+    i.setNroDormitorios(nroDormitorios);
     i.setCantBanios(cantBanios);
     i.setFinalidad(finalidad);
     i.setDetalles(detalles);
