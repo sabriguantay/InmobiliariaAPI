@@ -3,6 +3,7 @@ package ar.com.api.inmobiliaria.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
 import ar.com.api.inmobiliaria.entities.Inmobiliaria;
@@ -10,6 +11,7 @@ import ar.com.api.inmobiliaria.entities.Locatario;
 import ar.com.api.inmobiliaria.entities.Usuario;
 import ar.com.api.inmobiliaria.repo.UsuarioRepository;
 //import ar.com.api.inmobiliaria.security.Crypto;
+import ar.com.api.inmobiliaria.security.Crypto;
 
 /**
  * UsuarioService
@@ -90,6 +92,24 @@ public class UsuarioService {
         repo.save(u);
 
         return u;
+    }
+
+    public Usuario buscarPorUsername(String username) {
+        return repo.findByUserName(username);
+    }
+
+    public Usuario buscarPorEmail(String email) {
+        return repo.findByUserEmail(email);
+    }
+
+    public void login(String username, String password) {
+
+        Usuario u = repo.findByUserName(username);
+
+        if (u == null || !u.getPassword().equals(Crypto.encrypt(password, u.getUsername()))) {
+
+            throw new BadCredentialsException("Usuario o contraseña invalida");
+        }
     }
 
     /*

@@ -2,9 +2,15 @@ package ar.com.api.inmobiliaria.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
+import ar.com.api.inmobiliaria.security.jwt.JWTTokenUtil;
+import ar.com.api.inmobiliaria.services.JWTUserDetailsService;
 import ar.com.api.inmobiliaria.entities.*;
 import ar.com.api.inmobiliaria.models.request.*;
 import ar.com.api.inmobiliaria.models.response.*;
@@ -18,6 +24,15 @@ public class UsuarioController {
 
     @Autowired
     UsuarioService usuarioService;
+
+    /*
+     * @Autowired private AuthenticationManager authenticationManager;
+     */
+    @Autowired
+    private JWTTokenUtil jwtTokenUtil;
+
+    @Autowired
+    private JWTUserDetailsService userDetailsService;
 
     @PostMapping("/register/usuarios/inmobiliarias")
     public RegistrationResponse postRegisterUserInmobiliaria(@RequestBody UsuarioInmCreacionRequest req) {
@@ -41,6 +56,22 @@ public class UsuarioController {
         r.message = "Usuario Locatario creado con exito";
         return r;
     }
+
+    @PostMapping("auth/login")
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody LoginRequest authenticationRequest)
+            throws Exception {
+
+        usuarioService.login(authenticationRequest.username, authenticationRequest.password);
+
+        final UserDetails userDetails = userDetailsService
+            .loadUserByUsername(authenticationRequest.username);
+
+        final String token = jwtTokenUtil.generateToken(userDetails);
+
+        return ResponseEntity.ok(new JwtResponse(token));
+
+    }
+
 
     @GetMapping("/usuarios/{id}")
     public ResponseEntity<Usuario> getUsuarioPorId(@PathVariable int id) {

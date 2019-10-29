@@ -11,12 +11,9 @@ import ar.com.api.inmobiliaria.entities.Usuario;
  */
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 
-    Usuario findByEmail(String email);
+    public Usuario findByUserName(String userName);
+    public Usuario findByUserEmail(String email);
 
 	void save(Inmobiliaria i);
-
 	void save(Locatario l);
-
-	Usuario findByUsername(String username);
-    
 }
