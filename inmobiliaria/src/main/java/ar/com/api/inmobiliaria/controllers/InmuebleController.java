@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import ar.com.api.inmobiliaria.services.*;
 import ar.com.api.inmobiliaria.entities.*;
-import ar.com.api.inmobiliaria.models.request.InmuebleCreacionRequest;
+import ar.com.api.inmobiliaria.models.request.InmuebleRequest;
 import ar.com.api.inmobiliaria.models.response.*;
 
 /**
@@ -21,16 +21,16 @@ public class InmuebleController {
     InmuebleService is;
 
     @PostMapping("/inmuebles")
-    public InmuebleResponse postInmueble(@RequestBody InmuebleCreacionRequest req) {
+    public InmuebleResponse postInmueble(@RequestBody InmuebleRequest req) {
         InmuebleResponse r = new InmuebleResponse();
-        is.crearInmueble(req.moneda, req.valor, req.tipoInmueble, req.direccion, req.superficieTotal,
+        int inmuebleId = is.crearInmueble(req.moneda, req.valor, req.tipoInmueble, req.direccion, req.superficieTotal,
                 req.totalAmbientes, req.nroDormitorios, req.cantBanios, req.finalidad, req.detalles, req.barrio);
-    
-    
-                r.isOk = true;
-                r.message = "Inmueble creado con exito";
-                return r;
-            }
+
+        r.isOk = true;
+        r.message = "Inmueble se ha generado con éxito.";
+        r.inmuebleId = inmuebleId;
+        return r;
+    }
 
     @GetMapping("/inmuebles/searchbarrio=")
     public ResponseEntity<List<Inmueble>> getInmuebleByBarrio(
@@ -68,4 +68,24 @@ public class InmuebleController {
         return ResponseEntity.ok(li);
     }
 
+    @PutMapping("/inmuebles")
+    public InmuebleResponse updateInmueble(@PathVariable int id, @RequestBody InmuebleRequest req) {
+        InmuebleResponse r = new InmuebleResponse();
+        is.updateInmueble(req.inmuebleId, req.moneda, req.valor, req.detalles, req.estado);
+
+        r.isOk = true;
+        r.message = "Inmueble se ha modificado con éxito.";
+        return r;
+    }
+
+    @DeleteMapping("/inmobiliaria")
+    public InmuebleResponse deleteInmueble(@PathVariable int id){
+        InmuebleResponse r = new InmuebleResponse();
+        Inmueble i = is.deleteInmueble(id);
+        
+        r.isOk = true;
+        r.message = "Se ha eliminado con éxito.";
+        r.inmuebleId = i.getInmuebleId();
+        return r;
+    }
 }

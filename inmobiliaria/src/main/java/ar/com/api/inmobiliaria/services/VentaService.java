@@ -34,19 +34,26 @@ public class VentaService {
         return repo.findAll();
     }
 
-    public void crearVenta(String moneda, double monto) {
+    public int crearVenta(String moneda, double monto) {
         Venta v = new Venta();
         v.setMoneda(moneda);
         v.setMontoTotal(monto);
+        
         repo.save(v);
-
+        return v.getVentaId();
     }
-
 
     public void updateVenta (int ventaId, String moneda, double montoTotal){
         Venta v = buscarPorId(ventaId);
         v.setMoneda(moneda);
         v.setMontoTotal(montoTotal);
         repo.save(v);
+    }
+    
+    public Venta deleteVenta(int id) {
+        Venta v = buscarPorId(id);
+
+        repo.save(v);
+        return v;
     }
 }

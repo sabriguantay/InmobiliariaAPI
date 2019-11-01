@@ -7,8 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import ar.com.api.inmobiliaria.entities.Inmueble;
 
-
-
 /**
  * InmuebleRepository
  */

@@ -1,4 +1,4 @@
-package ar.com.ada.api.billeteravirtual.services;
+package ar.com.api.inmobiliaria.services;
 
 import java.util.ArrayList;
 
@@ -23,10 +23,9 @@ public class JWTUserDetailsService implements UserDetailsService {
         Usuario u = usuarioService.buscarPorUsername(username);
 
         if (u != null) {
-            return new User(u.getUserName(), u.getPassword(), new ArrayList<>());
+            return new User(u.getUsername(), u.getPassword(), new ArrayList<>());
         } else {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
     }
-
 }

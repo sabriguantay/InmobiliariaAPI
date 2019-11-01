@@ -1,4 +1,4 @@
-package ar.com.ada.api.billeteravirtual.security.jwt;
+package ar.com.api.inmobiliaria.security.jwt;
 
 import java.io.IOException;
 import java.io.Serializable;

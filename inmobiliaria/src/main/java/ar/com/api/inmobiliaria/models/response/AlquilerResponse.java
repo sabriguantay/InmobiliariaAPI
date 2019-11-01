@@ -7,5 +7,6 @@ public class AlquilerResponse {
 
     public boolean isOk;
     public String message = " ";
+    public int alquilerId;
 
 }

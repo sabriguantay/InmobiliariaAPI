@@ -1,4 +1,4 @@
-package ar.com.ada.api.billeteravirtual.security.jwt;
+package ar.com.api.inmobiliaria.security.jwt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

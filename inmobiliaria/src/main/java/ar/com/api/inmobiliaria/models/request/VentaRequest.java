@@ -1,11 +1,12 @@
 package ar.com.api.inmobiliaria.models.request;
 
 /**
- * VentaCreacionRequest
+ * VentaRequest
  */
-public class VentaCreacionRequest {
+public class VentaRequest {
 
     public String moneda;
     public double montoTotal;
-
+    public int ventaId;
+    
 }

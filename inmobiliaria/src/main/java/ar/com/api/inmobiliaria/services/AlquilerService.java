@@ -27,29 +27,34 @@ public class AlquilerService {
         if (r.isPresent())
             return r.get();
         return null;
-
     }
 
     public List<Alquiler> getListaAlquileres() {
         return repo.findAll();
     }
 
-
-    public void crearAlquiler(int mesesAlquiler, String moneda, double montoTotal) {
-
+    public int crearAlquiler(int mesesAlquiler, String moneda, double montoTotal) {
         Alquiler a = new Alquiler();
         a.setMesesAlquiler(mesesAlquiler);
         a.setMoneda(moneda);
         a.setMontoTotal(montoTotal);
+
         repo.save(a);
-    
+        return a.getAlquilerId();
     }
 
     public void updateAlquiler (int alquilerId, String moneda, double montoTotal){
         Alquiler a = buscarPorId(alquilerId);
         a.setMoneda(moneda);
         a.setMontoTotal(montoTotal);
+        
         repo.save(a);
     }
 
+    public Alquiler deleteAlquiler(int id) {
+        Alquiler a = buscarPorId(id);
+
+        repo.save(a);
+        return a;
+    }
 }

@@ -7,5 +7,5 @@ public class ReservaAlquilerResponse {
 
     public boolean isOk;
     public String message = " ";
-
+    public int reservaId;
 }

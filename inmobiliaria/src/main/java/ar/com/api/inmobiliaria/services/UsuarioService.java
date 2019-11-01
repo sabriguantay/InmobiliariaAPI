@@ -38,7 +38,7 @@ public class UsuarioService {
 
     }
 
-    public Usuario crearUsuarioLocatario(String nombre, String dni, String email, String domicilio, String localidad,
+    public int crearUsuarioLocatario(String nombre, String dni, String email, String domicilio, String localidad,
             int telefono, String password) {
 
         Locatario l = new Locatario();
@@ -55,11 +55,11 @@ public class UsuarioService {
         u.setEstado("ACTIVO");
         repo.save(u);
 
-        return u;
+        return u.getUsuarioId();
 
     }
 
-    public Usuario crearUsuarioInmobiliaria(String nombre, String domicilio, int telefono, String email,  String password) {
+    public int crearUsuarioInmobiliaria(String nombre, String domicilio, int telefono, String email,  String password) {
 
         Inmobiliaria i = new Inmobiliaria();
         i.setNombre(nombre);
@@ -72,8 +72,7 @@ public class UsuarioService {
         u.setPassword(password);
         repo.save(u);
 
-        return u;
-
+        return u.getUsuarioId();
     }
 
     public Usuario updateUsuario(int id, String email, String password) {
@@ -84,7 +83,6 @@ public class UsuarioService {
         repo.save(u);
         return u;
     }
-
 
     public Usuario deleteUsuario(int id) {
         Usuario u = this.buscarUsuarioPorId(id);
@@ -111,16 +109,4 @@ public class UsuarioService {
             throw new BadCredentialsException("Usuario o contraseña invalida");
         }
     }
-
-    /*
-     * public void login(String username, String password) {
-     * 
-     * Usuario u = repo.findByUsername(username);
-     * 
-     * if (u == null || !u.getPassword().equals(Crypto.encrypt(password,
-     * u.getUsername()))) {
-     * 
-     * throw new Exception("Usuario o contraseña invalida"); }
-     */
-
 }

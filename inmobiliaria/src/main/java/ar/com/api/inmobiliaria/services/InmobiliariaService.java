@@ -17,7 +17,7 @@ public class InmobiliariaService {
     InmobiliariaRepository repo;
 
     public void save(Inmobiliaria i) {
-       repo.save(i);
+        repo.save(i);
     }
 
     public Inmobiliaria buscarPorId(int id) {
@@ -30,14 +30,32 @@ public class InmobiliariaService {
         return null;
     }
 
-    public void updateDatosInmobiliaria(int id, String nombre, String domicilio, int telefono){
-            Inmobiliaria i = this.buscarPorId(id);
-            i.setNombre(nombre);
-            i.setDomicilio(domicilio);
-            i.setTelefono(telefono);
+    public int crearInmobiliaria(String nombre, String domicilio, int telefono, String email) {
 
-            repo.save(i);
+        Inmobiliaria i = new Inmobiliaria();
+        i.setNombre(nombre);
+        i.setDomicilio(domicilio);
+        i.setTelefono(telefono);
+        i.setEmail(email);
 
+        repo.save(i);
+        return i.getId();
+    }
+
+    public void updateDatosInmobiliaria(int id, String nombre, String domicilio, int telefono) {
+        Inmobiliaria i = this.buscarPorId(id);
+        i.setNombre(nombre);
+        i.setDomicilio(domicilio);
+        i.setTelefono(telefono);
+
+        repo.save(i);
+
+    }
+
+    public Inmobiliaria deleteInmobiliaria(int id) {
+        Inmobiliaria i = this.buscarPorId(id);
+        repo.save(i);
+        return i;
     }
 
 }

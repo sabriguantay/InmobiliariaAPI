@@ -1,4 +1,4 @@
-package ar.com.ada.api.billeteravirtual.security.jwt;
+package ar.com.api.inmobiliaria.security.jwt;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import ar.com.ada.api.billeteravirtual.services.JWTUserDetailsService;
+import ar.com.api.inmobiliaria.services.JWTUserDetailsService;
 import io.jsonwebtoken.ExpiredJwtException;
 
 /**

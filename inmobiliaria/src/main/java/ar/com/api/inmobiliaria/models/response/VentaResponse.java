@@ -7,5 +7,6 @@ public class VentaResponse {
 
         public boolean isOk;
         public String message = " ";
-
+        public int ventaId;
+        
 }

@@ -34,26 +34,61 @@ public class ReservaService {
         return repo.findAll();
     }
 
-
-    //check: se debe settear la id auto - incrementada¿? 
-    public Reserva crearReservaAlquiler(int id, int fecha, Alquiler alquiler, Contrato contrato) {
+    public int crearReservaAlquiler(int id, int fecha, Alquiler alquiler, Contrato contrato) {
         Reserva r = new Reserva();
 
         r.setReservaId(id);
         r.setFecha(new Date());
         r.setAlquiler(alquiler);
         r.setContrato(contrato);
+
+        repo.save(r);
+        return r.getReservaId();
+    }
+
+    public void updateReservaAlquiler (int id, int fecha, Alquiler alquiler, Contrato contrato){
+        Reserva r = buscarPorId(id);
+        r.setReservaId(id);
+        r.setFecha(new Date());
+        r.setAlquiler(alquiler);
+        r.setContrato(contrato);
+        
+        repo.save(r);
+    }
+
+    public Reserva deleteReservaAlquiler(int id) {
+        Reserva r = buscarPorId(id);
+
         repo.save(r);
         return r;
     }
 
-    public Reserva crearReservaVenta(int id, int fecha, Venta venta, Contrato contrato) {
+    public int crearReservaVenta(int id, int fecha, Venta venta, Contrato contrato) {
         Reserva r = new Reserva();
 
         r.setReservaId(id);
         r.setFecha(new Date());
         r.setVenta(venta);
         r.setContrato(contrato);
+
+        repo.save(r);
+        return r.getReservaId();
+    }
+    
+    public void updateReservaVenta (int id, int fecha, Venta venta, Contrato contrato){
+        Reserva r = new Reserva();
+
+        r.setReservaId(id);
+        r.setFecha(new Date());
+        r.setVenta(venta);
+        r.setContrato(contrato);
+
+        repo.save(r);
+    }
+    
+    public Reserva deleteReservaVenta(int id) {
+        Reserva r = buscarPorId(id);
+
         repo.save(r);
         return r;
     }

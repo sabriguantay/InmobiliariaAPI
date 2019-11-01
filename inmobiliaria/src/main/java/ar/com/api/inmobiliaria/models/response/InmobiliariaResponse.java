@@ -5,9 +5,8 @@ package ar.com.api.inmobiliaria.models.response;
  */
 public class InmobiliariaResponse {
 
-    
     public boolean isOk;
     public String message = " ";
+    public int inmobiliariaId;
 
-    
 }

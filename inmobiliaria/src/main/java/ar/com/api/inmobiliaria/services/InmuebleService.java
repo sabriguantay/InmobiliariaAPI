@@ -18,7 +18,7 @@ public class InmuebleService {
   @Autowired
   InmuebleRepository repo;
 
-  public Inmueble crearInmueble(String moneda, double valor, int tipoInmueble, String direccion, int superficieTotal,
+  public int crearInmueble(String moneda, double valor, int tipoInmueble, String direccion, int superficieTotal,
       int totalAmbientes, int nroDormitorios, int cantBanios, int finalidad, String detalles, String barrio) {
     Inmueble i = new Inmueble();
     i.setMoneda(moneda);
@@ -34,6 +34,22 @@ public class InmuebleService {
     i.setDetalles(detalles);
     i.setEstado("Disponible");
 
+    repo.save(i);
+    return i.getInmuebleId();
+  }
+
+  public void updateInmueble(int id, String moneda, double valor, String detalles, String estado) {
+    Inmueble i = this.buscarPorId(id);
+    i.setMoneda(moneda);
+    i.setValor(valor);
+    i.setDetalles(detalles);
+    i.setEstado(estado);
+
+    repo.save(i);
+  }
+
+public Inmueble deleteInmueble(int id) {
+    Inmueble i = this.buscarPorId(id);
     repo.save(i);
     return i;
   }

@@ -1,10 +1,11 @@
 package ar.com.api.inmobiliaria.models.request;
 
 /**
- * AlquilerCreacionRequest
+ * AlquilerRequest
  */
-public class AlquilerCreacionRequest {
+public class AlquilerRequest {
 
+    public int alquilerId;
     public int mesesAlquiler;
     public String moneda;
     public double montoTotal;

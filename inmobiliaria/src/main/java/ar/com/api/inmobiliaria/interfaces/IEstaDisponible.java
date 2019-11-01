@@ -7,5 +7,4 @@ public interface IEstaDisponible {
 
     public boolean estaDisponible = false;
 
-    
 }

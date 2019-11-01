@@ -7,4 +7,6 @@ public class UsuarioResponse {
 
     public boolean isOk;
     public String message = " ";
+    public int usuarioId;
+    
 }

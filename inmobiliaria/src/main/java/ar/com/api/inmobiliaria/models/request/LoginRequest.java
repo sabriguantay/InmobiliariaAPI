@@ -1,4 +1,4 @@
-package ar.com.ada.api.billeteravirtual.models.request;
+package ar.com.api.inmobiliaria.models.request;
 
 /**
  * LoginRequest

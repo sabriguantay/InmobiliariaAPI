@@ -1,10 +1,11 @@
 package ar.com.api.inmobiliaria.models.request;
 
 /**
- * InmuebleCreacionRequest
+ * InmuebleRequest
  */
-public class InmuebleCreacionRequest {
+public class InmuebleRequest {
 
+    public int inmuebleId;
     public String moneda;
     public double valor;
     public int tipoInmueble;
@@ -18,4 +19,5 @@ public class InmuebleCreacionRequest {
     public int finalidad; 
     public String detalles;
     public String barrio;
+    
 }
